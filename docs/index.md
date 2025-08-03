@@ -1,14 +1,19 @@
-# TechDocs
+# GoRoMa Documentation
 
-Welcome to the technical documentation collection.
+Quick and easy configuration options intended for administrators of workspaces which utilise **Go**ogle Workspace, **Ma**cOS, and **R**emotely **O**perate.
 
 ## Overview
 
-This site contains various technical documentation and resources.
+This documentation provides comprehensive guides and configurations for:
 
-## Navigation
+- **Google Workspace** - Dynamic groups, user management, Chrome policies
+- **macOS** - System updates, configuration management
+- **Integration** - Connecting Google Workspace with macOS management
 
-- [Documentation](/docs/) - Main documentation section
+## Quick Links
+
+- [Google Workspace](/google-workspace/) - Google Workspace administration
+- [macOS Management](/macos/) - macOS configuration and policies
 
 ## Getting Started
 

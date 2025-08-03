@@ -1,47 +1,109 @@
-# macOS Scripts & Configurations
+# 🍎 macOS Scripts & Configurations
 
-Comprehensive collection of macOS management scripts, configuration profiles, and automation tools.
+Production-ready macOS device management scripts and configuration profiles for enterprise deployment.
 
-## Application Configurations
+## 🖼️ Application Configurations
 
-Pre-configured `.mobileconfig` files for common macOS applications:
+### 💼 Productivity Suite
 
-### Productivity Applications
-- **Microsoft Office Suite** - Word, Excel, PowerPoint, Outlook, OneDrive
-- **1Password** - Password manager configuration
+#### Microsoft Office Complete Suite
+- **Word** - Document editing policies
+- **Excel** - Spreadsheet security settings
+- **PowerPoint** - Presentation controls
+- **Outlook** - Email and calendar policies
+- **OneDrive** - File sync configuration
+
+#### Collaboration Tools
 - **Slack** - Team communication settings
+- **Google Drive** - File sync and collaboration
 
-### Browsers
-- **Safari** - Security and policy configurations
-- **Brave Browser** - Privacy-focused browser settings  
-- **Microsoft Edge** - Enterprise browser configuration
+### 🌍 Browser Management
+- **Safari** - Native browser security policies
+- **Brave** - Privacy-focused configuration
+- **Microsoft Edge** - Enterprise browser settings
 - **Firefox** - Open-source browser policies
 
-### Google Services
-- **Google Drive** - File sync and collaboration settings
+### 🔒 Security Applications
+- **1Password** - Enterprise password management
 
-### Utilities
-- **Support App** - System information and support tools
-- **Renew** - License and subscription management
+### 🛠️ Utilities
+- **Support App** - System information and help desk tools
+- **Renew** - License management
 
-## Custom Commands
+## 🔍 Diagnostic Scripts
 
-### Functions
-Custom shell functions for macOS administration and automation.
+Real-time system health and compliance monitoring:
 
-### Informative Scripts  
-System information gathering and diagnostic tools.
+### Administrative Checks
+```bash
+#!/bin/bash
+# Check if current user has admin privileges
+if dseditgroup -o checkmember -m "%EmailPrefix%" admin &>/dev/null; then
+    echo "Current user (%EmailPrefix%) is in the admin group."
+else
+    echo "Current user (%EmailPrefix%) is not in the admin group."
+fi
+```
 
-## Base Configuration
+### System Information
+- **IP Address Detection** - Network configuration validation
+- **Location/Country** - Geolocation compliance checks
+- **TouchID Status** - Biometric authentication verification
+- **Uptime Monitoring** - System stability tracking
+- **Rosetta Detection** - Apple Silicon compatibility
 
-The `Base.mobileconfig` provides foundational device management settings that can be customized for your organization's needs.
+### Software Compliance
+- **CrowdStrike Sensor** - Endpoint protection status
+- **SwiftDialog** - User interface toolkit detection
+- **Installomator** - Software deployment tool status
+- **MDMWatchdog** - Mobile device management monitoring
 
-## Usage
+## ⚙️ Management Functions
 
-::: tip Device Management
-These configurations are designed for macOS device management environments. Test thoroughly in your specific setup before deployment.
+### Test Pilot Enrollment
+Advanced user group management with plist manipulation:
+
+```bash
+#!/bin/bash
+# Enroll user in Test Pilot program
+currentUser=$( scutil <<< "show State:/Users/ConsoleUser" | awk '/Name :/ { print $3 }' )
+uid=$(id -u "$currentUser")
+
+runAsUser() {
+  launchctl asuser "$uid" sudo -u "$currentUser" "$@"
+}
+
+# Set TestPilot flag
+runAsUser defaults write /Users/$currentUser/Library/Preferences/tld.domain.user TestPilot -bool true
+
+# Verify and notify
+result=$(runAsUser defaults read /Users/$currentUser/Library/Preferences/tld.domain.user TestPilot 2>/dev/null)
+if [ "$result" == "1" ]; then
+  echo "TestPilot key set to true successfully."
+  runAsUser /usr/local/bin/dialog --notification --title "Test Pilot Program" \
+    --message "You have successfully enrolled into the Test Pilot program."
+fi
+```
+
+## 📜 Base Configuration
+
+**Base.mobileconfig** - Foundation settings for:
+- System preferences
+- Security policies
+- Network configurations
+- User restrictions
+
+## 🚀 Quick Deployment
+
+1. **Download** the required .mobileconfig files
+2. **Test** in a development environment
+3. **Deploy** via your MDM solution (Jamf Pro, Intune, etc.)
+4. **Monitor** with diagnostic scripts
+
+::: warning License Compliance
+All scripts are GNU AGPL v3 licensed. Maintain attribution and share modifications.
 :::
 
-## Repository Reference
-
-All scripts and configurations are maintained in the [Device-Management repository](https://github.com/BiosPlus/Device-Management/tree/main/MacOS).
+::: tip Jamf Pro Users
+`.mobileconfig` files may need modification for Jamf compatibility. Test thoroughly.
+:::

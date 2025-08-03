@@ -51,7 +51,8 @@ export default {
         items: [
           { text: 'Overview', link: '/scripts/' },
           { text: 'macOS Scripts', link: '/scripts/macos/' },
-          { text: 'Google Workspace Scripts', link: '/scripts/google-workspace/' }
+          { text: 'Google Workspace Scripts', link: '/scripts/google-workspace/' },
+          { text: 'Microsoft 365 Scripts', link: '/scripts/microsoft365/' }
         ]
       }
     ],

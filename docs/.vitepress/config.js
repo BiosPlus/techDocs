@@ -1,6 +1,7 @@
 export default {
   title: 'GoRoMa Documentation',
   description: 'Google Workspace, macOS, and Remote Operation administration guides',
+  outDir: '../../dist',
   
   themeConfig: {
     nav: [

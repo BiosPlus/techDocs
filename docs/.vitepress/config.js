@@ -12,7 +12,8 @@ export default {
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Google Workspace', link: '/google-workspace/' },
-      { text: 'macOS', link: '/macos/' }
+      { text: 'macOS', link: '/macos/' },
+      { text: 'Scripts & Automation', link: '/scripts/' }
     ],
     
     sidebar: [
@@ -43,6 +44,14 @@ export default {
         items: [
           { text: 'Overview', link: '/macos/' },
           { text: 'OS Updates', link: '/macos/os-updates' }
+        ]
+      },
+      {
+        text: 'Scripts & Automation',
+        items: [
+          { text: 'Overview', link: '/scripts/' },
+          { text: 'macOS Scripts', link: '/scripts/macos/' },
+          { text: 'Google Workspace Scripts', link: '/scripts/google-workspace/' }
         ]
       }
     ],

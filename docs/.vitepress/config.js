@@ -1,7 +1,12 @@
+import { fileURLToPath, URL } from 'node:url'
+import { dirname, resolve } from 'node:path'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
 export default {
   title: 'GoRoMa Documentation',
   description: 'Google Workspace, macOS, and Remote Operation administration guides',
-  outDir: '../../dist',
+  outDir: resolve(__dirname, '../../dist'),
   
   themeConfig: {
     nav: [

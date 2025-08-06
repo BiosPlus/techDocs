@@ -20,5 +20,3 @@ This works on the basis that you deploy a mobileconfig file macs with a full con
 ### Option Two: The web based Nudge configuration
 
 This works on the basis that you deploy a mobileconfig file macs telling them where the actual configuration source is hosted. In this case, on github as a raw file.
-
-## MacOS 14+ (Sonoma and newer)
